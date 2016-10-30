@@ -60,8 +60,8 @@ define('FORCE_SSL_ADMIN', true);
 |--------------------------------------------------------------------------
 | WordPress Debugging Mode - MODIFICATION NOT RECOMMENDED (see below)
 |--------------------------------------------------------------------------
-| 
-| Set OpenShift's APPLICATION_ENV environment variable in order to enable 
+|
+| Set OpenShift's APPLICATION_ENV environment variable in order to enable
 | detailed PHP and WordPress error messaging during development.
 |
 | Set the variable, then restart your app. Using the `rhc` client:
@@ -69,13 +69,13 @@ define('FORCE_SSL_ADMIN', true);
 |   $ rhc env set APPLICATION_ENV=development -a <app-name>
 |   $ rhc app restart -a <app-name>
 |
-| Set the variable to 'production' and restart your app to deactivate error 
+| Set the variable to 'production' and restart your app to deactivate error
 | reporting.
 |
 | For more information about the APPLICATION_ENV variable, see:
 | https://developers.openshift.com/en/php-getting-started.html#development-mode
 |
-| WARNING: We strongly advise you NOT to run your application in this mode 
+| WARNING: We strongly advise you NOT to run your application in this mode
 |          in production.
 |
 */
@@ -129,3 +129,14 @@ if ( !defined('WP_PLUGIN_DIR') && is_link(ABSPATH . '/wp-content/plugins') )
 
 // sets up WordPress vars and included files
 require_once(ABSPATH . 'wp-settings.php');
+
+if( ! function_exists('activate_plugin') ) {
+  require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+
+if( ! is_plugin_active( $plugin ) ) {
+  activate_plugin( 'bb-plugin/fl-builder.php' );
+}
+
+$post_types = array('post', 'page');
+FLBuilderModel::update_admin_settings_option( '_fl_builder_post_types', $post_types, true );
