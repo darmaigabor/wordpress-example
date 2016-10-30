@@ -138,5 +138,5 @@ if( ! is_plugin_active( $plugin ) ) {
   activate_plugin( 'bb-plugin/fl-builder.php' );
 }
 
-$post_types = array('post', 'page');
-FLBuilderModel::update_admin_settings_option( '_fl_builder_post_types', $post_types, true );
+//$post_types = array('post', 'page');
+//FLBuilderModel::update_admin_settings_option( '_fl_builder_post_types', $post_types, true );
