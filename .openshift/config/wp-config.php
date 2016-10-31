@@ -138,5 +138,8 @@ if( ! is_plugin_active( 'bb-plugin/fl-builder.php' ) ) {
   activate_plugin( 'bb-plugin/fl-builder.php' );
   $post_types = array('post', 'page');
   FLBuilderModel::update_admin_settings_option( '_fl_builder_post_types', $post_types, true );
+  update_option('template', 'receptar');
+  update_option('stylesheet', 'receptar');
+  update_option('current_theme', 'receptar');
 }
 
