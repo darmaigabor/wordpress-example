@@ -130,13 +130,13 @@ if ( !defined('WP_PLUGIN_DIR') && is_link(ABSPATH . '/wp-content/plugins') )
 // sets up WordPress vars and included files
 require_once(ABSPATH . 'wp-settings.php');
 
-//if( ! function_exists('activate_plugin') ) {
-//  require_once( ABSPATH . 'wp-admin/includes/plugin.php');
-//}
+if( ! function_exists('activate_plugin') ) {
+  require_once( ABSPATH . 'wp-admin/includes/plugin.php');
+}
 
-//if( ! is_plugin_active( 'bb-plugin/fl-builder.php' ) ) {
-//  activate_plugin( 'bb-plugin/fl-builder.php' );
-//}
-
+if( ! is_plugin_active( 'bb-plugin/fl-builder.php' ) ) {
+  activate_plugin( 'bb-plugin/fl-builder.php' );
 //$post_types = array('post', 'page');
 //FLBuilderModel::update_admin_settings_option( '_fl_builder_post_types', $post_types, true );
+}
+
